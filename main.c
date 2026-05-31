@@ -407,6 +407,16 @@ void c(int ***data, int dataCount, int dataSize, int cMaxDotCount){
     // writeCDtoCSV("c_500.csv", "d_1000.csv", data, cResults, dataCount, dataSize, cMaxDotCount, 500, 1000);
 }
 
+void resetData(int ***data, int dataCount, int dataSize){
+    for (int i = 0; i < dataCount; i++){
+        for (int j = 0; j < dataSize; j++){
+            for (int z = 0; z < dataSize; z++){
+                data[i][j][z] = 0;
+            }
+        }
+    }
+}
+
 int main(){
     int dataCount = 5000000;
     int dataSize = 25;
@@ -414,8 +424,9 @@ int main(){
     int cMaxDotCount = 10;
     
     int ***data = createData(dataCount, dataSize);
+    ab(data, dataCount, dataSize, ABdotCount);
+    resetData(data, dataCount, dataSize);
     c(data, dataCount, dataSize, cMaxDotCount);
-    // ab(data, dataCount, dataSize, ABdotCount);
     
     return 0;
 }
